@@ -14,7 +14,7 @@ export type User = {
   profile_image_90: string;
 }
 
-export type Articles = {
+export type Article = {
   type_of: 'article';
   id: number;
   title: string;
@@ -82,7 +82,7 @@ export type ReadArticlesOptions = Paginated<{
 }>
 export type UpdateArticleData = Partial<CreateArticleData>;
 export const createArticlesCRUD = ({ baseUrl, secret }: Options) => {
-  const base = createCRUD<Articles, ArticleSummary, CreateArticleData, UpdateArticleData, ReadArticlesOptions,
+  const base = createCRUD<Article, ArticleSummary, CreateArticleData, UpdateArticleData, ReadArticlesOptions,
     'create' | 'update' | 'retrieve' | 'retrieveAll'>({
     baseUrl,
     secret,
@@ -93,7 +93,7 @@ export const createArticlesCRUD = ({ baseUrl, secret }: Options) => {
       retrieveAll: {}
     },
   });
-  const byPath = createRetrieve<Articles, string>({
+  const byPath = createRetrieve<Article, string>({
     secret,
     baseUrl,
     method: {
