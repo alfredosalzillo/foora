@@ -23,7 +23,7 @@ type Crud<Entity, EntitySummary, C, U, RA, Methods extends CRUDMethods> = Pick<{
     create: Create<Entity, C> ,
     update:  Update<Entity, U>,
     retrieve:  Read<Entity>,
-    retrieveAll: ReadAll<Entity, RA>,
+    retrieveAll: ReadAll<EntitySummary, RA>,
     delete: Delete,
 }, Methods>;
 
@@ -100,6 +100,6 @@ export const createCRUD: CreateCRUD = <Entity, EntitySummary, C, U, RA, T extend
   create: createCreate<Entity, C>({ ...options, method: options.methods.create }),
   update: createUpdate<Entity, U>({ ...options, method: options.methods.update }),
   retrieve: createRetrieve<Entity>({ ...options, method: options.methods.retrieve }),
-  retrieveAll: createRetrieveAll<Entity, RA>({ ...options, method: options.methods.retrieveAll }),
+  retrieveAll: createRetrieveAll<EntitySummary, RA>({ ...options, method: options.methods.retrieveAll }),
   delete: createDelete({ ...options, method: options.methods.delete })
 }), Object.keys(options.methods) as CRUDMethods[])
