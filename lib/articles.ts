@@ -15,7 +15,7 @@ export type User = {
 }
 
 export type Articles = {
-  type_of: string;
+  type_of: 'article';
   id: number;
   title: string;
   description: string;
@@ -40,7 +40,7 @@ export type Articles = {
   user: User;
 }
 export type ArticleSummary = {
-  type_of: string;
+  type_of: 'article';
   id: number;
   title: string;
   description: string;
